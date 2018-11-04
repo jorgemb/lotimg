@@ -202,7 +202,7 @@ class GUI(Frame):
         radio_nochange.grid(row=1, column=0, columnspan=2,
                             sticky=W)
 
-        radio_name_only = Radiobutton(form_names, text="Nombre + N",
+        radio_name_only = Radiobutton(form_names, text="Name + N",
                                       value=1,
                                       variable=self.selected_name,
                                       command=self.rule_change)
