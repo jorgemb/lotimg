@@ -1,79 +1,64 @@
-# -*- coding: cp1252 -*-
-##############################################################
-# Imagenes.py
-# Autores:
-#   - Jorge Luis Martínez
-# Este módulo contiene las funciones básicas convertir y
-# modificar las imágenes individuales del usuario.
-# Fecha de creacion: 8 de mayo del 2011
-##############################################################
+# -*- coding: utf-8 -*-
+import os
 
-import os, sys
-import Image
+from PIL import Image
 
-class Imagenes():
-    
-    def __init__(self,infile):
+
+class Images:
+    def __init__(self, infile):
         self.photoPath = infile
-        self.photoName = os.path.split( infile )[0]
-        self.format = os.path.splitext( infile )[1]
+        self.photoName = os.path.split(infile)[0]
+        self.format = os.path.splitext(infile)[1]
 
-        # Trata de abrir la imagen
         try:
-            self.image = Image.open( infile )
+            self.image = Image.open(infile)
             self.isOpen = True
         except IOError:
             self.isOpen = False
 
-    def isValid( self ):
+    def is_valid(self):
         return self.isOpen
-        
-        
-    def FormatChanger(self,formato):
-        # Validar
-        if( not self.isValid() ):
+
+    def change_format(self, new_format):
+        if not self.is_valid():
             return False
 
-        self.format = "." + formato
+        self.format = "." + new_format
         return True
-    
-    def SizeChanger(self, x,y ):
-        # Validar
-        if( not self.isValid() ):
+
+    def change_size(self, x, y):
+        if not self.is_valid():
             return False
 
-        if( x < 0 or y < 0 ):
+        if x < 0 or y < 0:
             return False
 
-        # Cambiar tamano
-        oldSize = self.image.size
-        # ..si alguno de los argumentos es cero, utilizar el tamano
-        # que tenia la imagen
-        if( x == 0 ):
-            x = oldSize[0]
-        if( y == 0 ):
-            y = oldSize[1]
-        
-        img = self.image.resize( (x, y), Image.ANTIALIAS )
+        old_size = self.image.size
+
+        if x == 0:
+            x = old_size[0]
+        if y == 0:
+            y = old_size[1]
+
+        img = self.image.resize((x, y), Image.ANTIALIAS)
         self.image = img
         return True
 
-    def Save( self, directory, name ):
-        # Validar
-        if( not self.isValid() ):
+    def save(self, directory, name):
+        if not self.is_valid():
             return False
-        if( len(directory) == 0 ):
+        if len(directory) == 0:
             return False
 
-        # Guardar
-        path = os.path.join( directory, name + self.format )
-
+        # Save
+        path = os.path.join(directory, name + self.format)
         try:
-            self.image.save( path )
+            self.image.save(path)
             return True
         except IOError:
             return False
 
+    # TODO: Make rotation and rolling transformations
     """
     def Rotation (degrees):
         import Image
@@ -111,4 +96,3 @@ class Imagenes():
         else:
             print "Ya existe una imagen con el mismo nombre y extension"
     """
-        

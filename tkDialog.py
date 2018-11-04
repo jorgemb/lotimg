@@ -1,15 +1,15 @@
 ##################################################
-# Otenido de:
+# Source:
 #    http://effbot.org/tkinterbook/tkinter-dialog-windows.htm
 #################################################
 
-from Tkinter import *
 import os
+from tkinter import Toplevel, Frame, Button, ACTIVE, LEFT
+
 
 class Dialog(Toplevel):
 
-    def __init__(self, parent, title = None, other = None):
-
+    def __init__(self, parent, title=None, other=None):
         Toplevel.__init__(self, parent)
         self.transient(parent)
 
@@ -34,8 +34,8 @@ class Dialog(Toplevel):
 
         self.protocol("WM_DELETE_WINDOW", self.cancel)
 
-        self.geometry("+%d+%d" % (parent.winfo_rootx()+50,
-                                  parent.winfo_rooty()+50))
+        self.geometry("+%d+%d" % (parent.winfo_rootx() + 50,
+                                  parent.winfo_rooty() + 50))
 
         self.initial_focus.focus_set()
 
@@ -61,7 +61,7 @@ class Dialog(Toplevel):
         w = Button(box, text="Cancel", width=10, command=self.cancel)
         w.pack(side=LEFT, padx=5, pady=5)
 
-        #self.bind("<Return>", self.ok)
+        # self.bind("<Return>", self.ok)
         self.bind("<Escape>", self.cancel)
 
         box.pack()
@@ -72,7 +72,7 @@ class Dialog(Toplevel):
     def ok(self, event=None):
 
         if not self.validate():
-            self.initial_focus.focus_set() # put focus back
+            self.initial_focus.focus_set()  # put focus back
             return
 
         self.withdraw()
@@ -92,9 +92,7 @@ class Dialog(Toplevel):
     # command hooks
 
     def validate(self):
-
-        return 1 # override
+        return 1  # override
 
     def apply(self):
-
-        pass # override
+        pass  # override

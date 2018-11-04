@@ -1,7 +1,7 @@
-add Imagenes/add_32.png
-down Imagenes/arrow-down_32.png
-up Imagenes/arrow-up_32.png
-delete Imagenes/delete_32.png
-dir Imagenes/folder-open_32.png
-convertir Imagenes/convertir.png
-convertir_d Imagenes/convertir-gris.png
+add resources/add_32.png
+down resources/arrow-down_32.png
+up resources/arrow-up_32.png
+delete resources/delete_32.png
+dir resources/folder-open_32.png
+convert resources/convertir.png
+convert_d resources/convertir-gris.png
