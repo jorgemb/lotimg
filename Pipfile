@@ -7,6 +7,6 @@ name = "pypi"
 python_version = "3"
 
 [packages]
-Pillow = "==6.*"
+Pillow = ">=6.2.2"
 
 [dev-packages]
