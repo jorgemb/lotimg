@@ -14,6 +14,19 @@ The first version was crude and made with a team of fellow students, however I r
 term because I saw potential for it to be used as an everyday tool. On 2018 I ported it to Python3 and uploaded it to
 GitHub.
 
+## Requirements
+In order to run this project you will need the following system packages installed:
+- python3
+- pipenv
+- tkinter
+
+After this you can run the following commands to start the program:
+```shell script
+pipenv install
+pipenv run python GUI.py
+```
+The first command will create a virtual environment and install all the dependencies for the project.
+
 ---
 License: [MIT License](LICENSE)
 
